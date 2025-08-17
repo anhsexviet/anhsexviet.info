@@ -1,5 +1,5 @@
 // ===============================
-// ✅ File: app/robots.txt/route.ts (Next.js 14+) – Trả về robots.txt full control
+// ✅ File: app/robots.txt/route.ts – Đúng chuẩn, không lặp block
 // ===============================
 export async function GET() {
   const body = `

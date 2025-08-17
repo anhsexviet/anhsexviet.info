@@ -1,5 +1,5 @@
 // ===============================
-// ✅ File: app/layout.tsx – POLISH SEO + Performance cho AnhSexViet.info
+// ✅ File: app/layout.tsx – POLISH SEO + Performance + GA4 cho AnhSexViet.info
 // ===============================
 
 import "../styles/globals.css";
@@ -27,21 +27,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="vi">
       <head>
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZHV1M22W6"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-CZHV1M22W6');
+            `,
+          }}
+        />
+
         {/* Google Fonts: Đảm bảo preload, tốc độ nhanh */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Montserrat:600,900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet" />
 
         {/* Favicon – đa định dạng */}
         <link rel="icon" href="/favicon.ico" />
