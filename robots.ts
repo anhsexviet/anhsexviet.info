@@ -1,17 +1,17 @@
 // ===============================
-// ✅ File: app/robots.ts – Robots.txt động, Next.js 14, map tự động ra /robots.txt
+// ✅ File: app/robots.ts (Next.js 14+) – Sinh động /robots.txt khi build
 // ===============================
 export default function robots() {
-  // Domain gốc (prod sẽ tự lấy đúng domain anhsexviet.info)
+  // Tự lấy domain production từ ENV, fallback về local khi dev
   const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        // Không cần disallow: đã canonical hóa, không trùng lặp nội dung
+        // Đã canonical hóa, không cần disallow gì cả
       },
     ],
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: [`${base}/sitemap.xml`, `${base}/image-sitemap`, `${base}/video-sitemap`],
   };
 }
