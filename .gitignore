@@ -1,9 +1,22 @@
+# Ignore dependencies & build output
 node_modules/
 .next/
-.env
+out/
+dist/
+.cache/
+.vscode/
+.idea/
 *.log
-public/images/*
-!.gitkeep
-public/videos/*
-content/albums/*
-content/video/*
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore OS & editor junk
+.DS_Store
+Thumbs.db
+
+# KHÔNG chặn ảnh, album, videos, content!
+# (Chỉ ignore các thư mục build, tạm. Toàn bộ ảnh/video/album đều được add lên Git.)
+
+# Nếu muốn giữ thư mục trống, có thể thêm file .gitkeep (tuỳ chọn)
