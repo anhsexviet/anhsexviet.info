@@ -1,5 +1,5 @@
 // ===============================
-// ✅ File: app/video-sitemap.ts – Video Sitemap động cho AnhSexViet.info, chuẩn SEO Google
+// ✅ File:app\video-sitemap.xml\route.ts – Video Sitemap động cho AnhSexViet.info, chuẩn SEO Google
 // ===============================
 import { getAllAlbums } from "@/lib/albums";
 

@@ -1,11 +1,9 @@
 // ===============================
-// ✅ File: app/image-sitemap.ts – Dynamic Image Sitemap cho AnhSexViet.info (Next.js 14)
+// ✅ File: app/image-sitemap.xml/route.ts – Dynamic Image Sitemap cho AnhSexViet.info (Next.js 14)
 // ===============================
 import { getAllAlbums } from "@/lib/albums";
 
-/**
- * Encode title/text cho XML (Google yêu cầu không chứa ký tự lạ)
- */
+// Escape XML cho an toàn title/alt
 function escapeXML(text: string) {
   if (!text) return "";
   return text
@@ -25,7 +23,6 @@ export async function GET() {
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n`;
 
   for (const album of albums) {
-    // Tạo URL tuyệt đối cho cover
     const coverUrl = album.cover.startsWith("http")
       ? album.cover
       : base + (album.cover.startsWith("/") ? album.cover : "/" + album.cover);
@@ -39,7 +36,6 @@ export async function GET() {
     </image:image>
 `;
 
-    // Tạo URL tuyệt đối cho images[]
     (album.images || []).forEach((img: string, idx: number) => {
       const imgUrl = img.startsWith("http")
         ? img
@@ -60,7 +56,6 @@ export async function GET() {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      // "X-Robots-Tag": "noindex", // Không nên bật, để Google index sitemap
     },
   });
 }
