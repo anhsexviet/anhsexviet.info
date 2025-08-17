@@ -1,0 +1,54 @@
+
+THỦ TỤC TẠO VÀ PUBLIC ALBUM MỚI – ANHSEXVIET.INFO
+
+1. Chuẩn bị nội dung album mới trên máy tính
+- Ảnh đã resize, nén, đặt tên (1.jpg, 2.jpg…), có cover.jpg
+- Tên folder album: viết thường, không dấu, gạch nối (ví dụ: co-giao-ngoai-tinh)
+- File mô tả album (index.json) theo chuẩn: slug, title, cover, images, videos (nếu có), tags, views, createdAt,...
+
+2. Copy data vào đúng thư mục local project
+- Copy folder album + ảnh + index.json vào:
+  D:\BK\xpr\anhsexviet.info-main\public\images\anh-sex\[ten-album]\
+  D:\BK\xpr\anhsexviet.info-main\content\albums\[ten-album]\index.json
+
+3. Add, commit, push lên GitHub
+- Mở CMD tại thư mục project local:
+  git add .
+  git commit -m "Add album [tên album], ảnh mới"
+  git push
+- Kiểm tra trên GitHub: Xem folder/ảnh/index.json đã lên chưa.
+
+4. SSH vào VPS – cd vào đúng folder web
+  ssh root@ip-vps:
+ssh root@154.38.169.121
+  cd /root/web-anhsexviet
+
+5. Kéo code mới nhất về VPS
+  git pull origin main
+
+6. Build lại web (nếu Next.js dạng static hoặc SSG)
+  npm run build
+  (Nếu web dạng SSR/dynamic content, chỉ cần git pull, không cần build lại.)
+
+7. Restart server (nếu dùng pm2)
+  pm2 restart anhsexviet
+  (Nếu chạy tay: stop/start lại bằng npm start)
+
+8. Kiểm tra album trên web
+- Truy cập web bằng IP hoặc domain
+- Check giao diện album, cover, view, video, tag… đã lên chưa.
+
+9. Fix lỗi/thiếu ảnh (nếu có)
+- Nếu thiếu ảnh/metadata, update lại local, commit/push lại rồi lặp lại các bước 4–8.
+
+Tóm tắt nhanh:
+1. Chuẩn bị ảnh + index.json + folder album mới
+2. Copy vào đúng folder project local
+3. git add . → git commit → git push
+4. SSH vào VPS, cd đúng folder, git pull
+5. npm run build (nếu cần)
+6. pm2 restart anhsexviet
+7. Kiểm tra web – DONE!
+
+KHÔNG bao giờ sửa trực tiếp trên VPS – luôn chỉnh local, rồi push/pull Git.
+KHÔNG động vào folder truyendam.net – hai web chạy tách biệt tuyệt đối.
