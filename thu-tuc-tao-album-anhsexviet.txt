@@ -33,7 +33,6 @@ ssh root@154.38.169.121
 7. Restart server (nếu dùng pm2)
   pm2 restart anhsexviet
   (Nếu chạy tay: stop/start lại bằng npm start)
-  pm2 delete anhsexviet && pm2 start npm --name "anhsexviet" -- run start
 
 8. Kiểm tra album trên web
 - Truy cập web bằng IP hoặc domain
